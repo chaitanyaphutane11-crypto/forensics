@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "TPU Attack Console (Pure JS Edition)",
+  "version": "1.0.0",
+  "description": "Forensics logic compiled to pure JS for MV3.",
+  "action": { "default_popup": "console.html" },
+  "permissions": []
+}

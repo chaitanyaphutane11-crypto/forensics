@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TPU Attack Console</title>
+  <style>
+    body { font-family: 'Consolas', monospace; font-size: 13px; width: 760px; height: 780px; margin: 10px; background: #f5f5f5; }
+    .tabs { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 10px; }
+    .tab { padding: 8px 16px; cursor: pointer; border: 1px solid transparent; background: #e0e0e0; margin-right: 2px; }
+    .tab.active { background: white; border: 1px solid #ccc; border-bottom-color: transparent; font-weight: bold; }
+    .tab-content { display: none; background: white; border: 1px solid #ccc; padding: 15px; height: 690px; box-sizing: border-box; }
+    .tab-content.active { display: block; }
+    .grid { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
+    input[type="text"], input[type="number"] { width: 70px; font-family: 'Consolas'; padding: 3px; }
+    button { padding: 6px 12px; font-family: 'Consolas'; font-weight: bold; cursor: pointer; }
+    textarea { width: 100%; height: 100%; font-family: 'Consolas'; resize: none; box-sizing: border-box; }
+    #statusDisp { text-align: center; color: blue; font-weight: bold; margin-bottom: 10px; }
+    .view-pane { display: flex; gap: 10px; height: 480px; }
+    select { width: 300px; height: 400px; font-family: 'Consolas'; }
+    .detail-view { width: 410px; display: flex; flex-direction: column; gap: 10px; }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" data-tab="forensics">Forensics</div>
+    <div class="tab" data-tab="binary">Binary Audit</div>
+    <div class="tab" data-tab="bracket">Bracket Logic</div>
+  </div>
+
+  <div id="forensics" class="tab-content active">
+    <div id="statusDisp">Status: Loading...</div>
+    <div class="grid">
+      <label>Base/Exp: <input type="number" id="eBase" value="10"> <input type="number" id="eExp" value="10"></label>
+      <label>Iters/Batch: <input type="number" id="eIters" value="10"> <input type="number" id="eBatch" value="55555"></label>
+    </div>
+    <div class="grid">
+      <button id="btnSum" disabled>1. Run Summation</button>
+      <button id="btnMat" disabled>2. Analyze Matrix</button>
+      <button id="btnRem" disabled>3. Calc Remaining</button>
+    </div>
+    <div class="view-pane">
+      <select id="treeView" size="20"></select>
+      <div class="detail-view">
+        <textarea id="detail" readonly placeholder="Selected Node Data..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div id="binary" class="tab-content">
+    <textarea id="auditLog" readonly placeholder="Differential audit logs..."></textarea>
+  </div>
+
+  <div id="bracket" class="tab-content">
+    <div class="grid" style="margin-bottom:15px;">
+      <input type="text" id="brkIn" value="{{}{}}" style="width: 540px;">
+      <button id="btnBrk" style="width: 140px;" disabled>Match Bits</button>
+    </div>
+    <div style="height: 600px;">
+      <textarea id="brkLog" readonly placeholder="Bracket outputs..."></textarea>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+<script type="module" src="tabs.js"></script></body>
+</html>
