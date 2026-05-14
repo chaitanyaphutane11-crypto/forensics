@@ -1,0 +1,1 @@
+emcc core.cpp -O3 -o core.js   -s WASM=0 -s MODULARIZE=1 -s EXPORT_ES6=1   -s EXPORTED_FUNCTIONS="['_runSummation','_generateAuditReport','_analyzeMatrix','_calcRemaining','_runBracket','_getBufferSize','_getArchBits']"   -s EXPORTED_RUNTIME_METHODS="['ccall','cwrap']"
